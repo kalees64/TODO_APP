@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
+}
+.body{
+    max-width: 500px;
+    min-height: 100vh;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    /* border-radius: 10px; */
+}
+.header{
+    background-color: rgba(0, 255, 255);
+    /* border-top-right-radius: 10px; */
+    /* border-top-left-radius: 10px; */
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+.header-title{
+    padding: 2%;
+    font-size: 2rem;
+    /* color: transparent; */
+}
+.main{
+    /* height: 90vh; */
+    flex-grow: 1;
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-top: 0;
+    border-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+}
+.footer{
+    background-color: rgba(0, 255, 255);
+    /* border-bottom-left-radius: 10px; */
+    /* border-bottom-right-radius: 10px; */
+}
+.footer-content{
+    font-weight: bold;
+    padding: 2%;
+    font-size: 1rem;
+    position: sticky;
+    bottom: 0;
+}
+.list{
+    width: 80%;
+    margin: 3% auto;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.list-item{
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3%;
+    border-radius: 2%;
+    border: 3px solid aqua;
+    box-shadow: 3px 3px 5px blue;
+}
+.list-item:checked{
+    text-decoration: underline;
+}
+.list-item:hover{
+    background-color: aqua;
+    border: 3px solid aliceblue;
+}
+.list-item input[type=checkbox]{
+    accent-color: blue;
+    /* transform: scale(3,3); */
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+.list-item button{
+    padding: 10px;
+    border: 0;
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.list-item button:hover{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 2px;
+}
+.list-item button:active{
+    background-color: red;
+}
+.list-item label{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.form{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form input{
+    padding: 3%;
+    width: 85%;
+    font-size: 1.2rem;
+    outline-color: aqua;
+    border:1px solid aqua;
+}
+.form button{   
+    padding: 3%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid aqua;
+    cursor: pointer;
+}
+.form-search{
+    width: 80%;
+    margin:0 auto ;
+    margin-top:1% ;
+}
+.form-search input{
+    padding: 3%;
+    width: 100%;
+    font-size: 1.2rem;
+    outline-color: aqua;
+    border:1px solid aqua;
+}
+.empty{
+    width: 80%;
+    margin: 0 auto;
+    /* background-color: red; */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+.body-color{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.color-box{
+    width: 200px;
+    background-color: red;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px dotted black;
+}
+.color-form input{
+    padding: 20px;
+    font-size: 1.2rem;
+    outline: 0;
+    border: 1px dashed aqua;
+    border-radius: 20px;
+}
+.color-btn{
+    padding: 15px;
+    background-color: white;
+    border:2px solid blue;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
