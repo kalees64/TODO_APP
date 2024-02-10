@@ -1,44 +1,74 @@
-import { useState } from 'react';
 import './App.css';
+import Header from './Header';
+import Content from './Content';
+import Footer from './Footer';
+import {useState} from 'react'
 
 function App() {
+  const headerTitle = "TO DO LIST"
 
-  const [colorValue,setColorValue]  = useState('')
-  const [textColor,setTextColor] = useState("white")
+  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List"))) 
 
-  const toCapitalize = (text) =>{
-    let firstLetter = text.charAt(0).toUpperCase()
-    let remainingText = text.slice(1,text.length)
-    return firstLetter+remainingText
+  const [input,setInput] = useState("")
+  const [searchValue,setSearchValue] = useState("")
+  function handleCheck(id){
+    const listItems = todos.map((todo)=>{
+      // todo.id === id ? {...todo,checkStatus:!todo.checkStatus} : todo
+      if(todo.id === id){
+        return {...todo,checkStatus : !todo.checkStatus}
+      }
+      else{
+        return todo
+      }
+  })
+    setTodos(listItems)
+    localStorage.setItem("Todo_List",JSON.stringify(listItems))
   }
 
-  const outColorName = toCapitalize(colorValue)
-
-
-  function handleColor(){
-    textColor === "white" ? setTextColor("black"):
-    textColor === "black" ? setTextColor("white"): setTextColor(textColor)
+  function handleDelete(id){
+    const listItems = todos.filter((todo)=>
+    todo.id !== id
+  )
+    // console.log(listItems)
+    setTodos(listItems)
+    localStorage.setItem("Todo_List",JSON.stringify(listItems))
   }
 
+  function handleSubmit(e){
+    e.preventDefault()
+    if(input === ""){
+      alert("Enter Task Name First")
+    }
+    else{
+      let idValue ;
+      todos.length ? idValue = todos[todos.length-1].id +1 : idValue = 1
+      let newTodo = {
+        id: idValue ,
+        checkStatus : false,
+        task : input.toUpperCase()
+      }
+      // console.log(newTodo)
+      const listItems = [...todos,newTodo]
+      // console.log(listItems)
+      setTodos(listItems)
+    localStorage.setItem("Todo_List",JSON.stringify(listItems))
+      setInput("")
+    }
+  }
   return (
-    <section className='body body-color'>
-      <article style={{backgroundColor:colorValue , color: textColor}} className='color-box'>
-        {outColorName ? outColorName : "Red"}<br />
-        #Hex Value
-      </article>
-      <form className='color-form'onSubmit={(e)=> {e.preventDefault()}}>
-        <input 
-        type="text" 
-        placeholder='Enter Color Name'
-        value={colorValue}
-        onChange={(e)=> setColorValue(e.target.value)}
-        />
-      </form>
-      <button
-      type='button'
-      className='color-btn'
-      onClick={handleColor}
-      >Toggle Color</button>
+    <section className='body'>
+      <Header title = {headerTitle}/>
+      <Content
+        todos = {todos.filter((todo)=> (todo.task).includes(searchValue))}
+        handleCheck = {handleCheck}
+        handleDelete= {handleDelete}
+        handleSubmit = {handleSubmit} 
+        input = {input}
+        setInput = {setInput}
+        searchValue ={searchValue}
+        setSearchValue={setSearchValue}
+      />
+      <Footer length = {todos.length}/>
     </section>
   );
 }
