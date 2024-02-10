@@ -7,12 +7,12 @@ import {useState} from 'react'
 function App() {
   const headerTitle = "TO DO LIST"
 
-  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List")) || []) 
+  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List")) || [{id:1,checkStatus:false,task:"Task-1"}]) 
 
-  // let filterTodos = todos.filter((todo)=> (todo.task).includes(searchValue))
+  let filterTodos = todos.filter((todo)=> (todo.task).includes(searchValue))
 
   const [input,setInput] = useState("")
-  // const [searchValue,setSearchValue] = useState("")
+  const [searchValue,setSearchValue] = useState("")
   function handleCheck(id){
     const listItems = todos.map((todo)=>{
       // todo.id === id ? {...todo,checkStatus:!todo.checkStatus} : todo
@@ -61,12 +61,14 @@ function App() {
     <section className='body'>
       <Header title = {headerTitle}/>
       <Content
-        todos = {todos}
+        todos = {filterTodos}
         handleCheck = {handleCheck}
         handleDelete= {handleDelete}
         handleSubmit = {handleSubmit} 
         input = {input}
         setInput = {setInput}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
       />
       <Footer length = {todos.length}/>
     </section>
