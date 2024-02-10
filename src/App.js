@@ -7,7 +7,7 @@ import {useState} from 'react'
 function App() {
   const headerTitle = "TO DO LIST"
 
-  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List"))) 
+  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List")) || []) 
 
   // let filterTodos = todos.filter((todo)=> (todo.task).includes(searchValue))
 
