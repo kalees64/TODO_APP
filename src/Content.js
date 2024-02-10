@@ -4,7 +4,7 @@ import './App.css'
 import TodoItem from './TodoItems'
 import AddItem from './AddItem'
 
-const Content = ({todos,handleCheck,handleDelete,handleSubmit,input,setInput,searchValue,setSearchValue}) => {
+const Content = ({todos,handleCheck,handleDelete,handleSubmit,input,setInput}) => {
   const weekdays = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
   const months = ["JAN","FEB","MAR","APR","MAY","JUN","JULY","AUG","SEP","OCT","NOV","DEC"]
   const date = new Date()
@@ -23,14 +23,14 @@ const Content = ({todos,handleCheck,handleDelete,handleSubmit,input,setInput,sea
       handleSubmit={handleSubmit}
       />
 
-      <form className='form-search' onSubmit={(e) =>{e.preventDefault()}}>
+      {/* <form className='form-search' onSubmit={(e) =>{e.preventDefault()}}>
         <input 
         type='text' 
         value={searchValue}
         onChange={(e)=>setSearchValue(e.target.value.toUpperCase())}
         placeholder='Search'
         />
-      </form>
+      </form> */}
 
       {todos.length ? (
         <TodoItem 
