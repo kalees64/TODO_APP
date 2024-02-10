@@ -9,6 +9,8 @@ function App() {
 
   const [todos,setTodos] = useState(JSON.parse(localStorage.getItem("Todo_List"))) 
 
+  let filterTodos = todos.filter((todo)=> (todo.task).includes(searchValue))
+
   const [input,setInput] = useState("")
   const [searchValue,setSearchValue] = useState("")
   function handleCheck(id){
@@ -59,7 +61,7 @@ function App() {
     <section className='body'>
       <Header title = {headerTitle}/>
       <Content
-        todos = {todos.filter((todo)=> (todo.task).includes(searchValue))}
+        todos = {filterTodos}
         handleCheck = {handleCheck}
         handleDelete= {handleDelete}
         handleSubmit = {handleSubmit} 
